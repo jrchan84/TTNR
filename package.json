@@ -1,0 +1,24 @@
+{
+  "name": "ttnr",
+  "version": "1.0.0",
+  "description": "TTNR is a custom discord bot for the DSC UBC General Server. It's main purpose is to increase DSC's community engagement in discord through general purpose use, gamified user interaction, and networking encouragement.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubcdsc/TTNR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ubcdsc/TTNR/issues"
+  },
+  "homepage": "https://github.com/ubcdsc/TTNR#readme",
+  "dependencies": {
+    "discord.js": "^13.2.0",
+    "eslint": "^8.0.1"
+  }
+}
