@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ubcdsc/TTNR#readme",
   "dependencies": {
     "discord.js": "^13.2.0",
+    "dotenv": "^10.0.0",
     "eslint": "^8.0.1"
   }
 }
