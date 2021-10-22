@@ -14,5 +14,8 @@ TTNR is implemented with Node.js and JavaScript, utilizing the popular Discord.j
 
 - Clone the repo
 - run `npm install`
-- Create a .env file in the root directory. `DISCORD_TOKEN=<TOKEN> CLIENT_ID=<CLIENTID> GUILD_ID=<SERVERID>`
+- Create a .env file in the root directory with the following fields: `DISCORD_TOKEN=<TOKEN> \n CLIENT_ID=<CLIENTID> \n GUILD_ID=<SERVERID>`
+- - TOKEN: reach out to Project Owner for token
+- - CLIENTID: 899400703112519690
+- - SERVERID:
 - node bot.js
