@@ -15,7 +15,7 @@ TTNR is implemented with Node.js and JavaScript, utilizing the popular Discord.j
 - Clone the repo
 - run `npm install`
 - Create a .env file in the root directory with the following fields: `DISCORD_TOKEN=<TOKEN> CLIENT_ID=<CLIENTID> GUILD_ID=<SERVERID>`
-- - TOKEN: reach out to Project Owner for token
-- - CLIENTID: 899400703112519690
-- - SERVERID: Server where bot is added. To find your guildID, enable developer mode in Discord and left click the servers name -> copy ID.
+  - TOKEN: reach out to Project Owner for token
+  - CLIENTID: 899400703112519690
+  - SERVERID: Server where bot is added. To find your guildID, enable developer mode in Discord and left click the servers name -> copy ID.
 - run `node bot.js`
