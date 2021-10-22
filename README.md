@@ -13,6 +13,7 @@ TTNR is implemented with Node.js and JavaScript, utilizing the popular Discord.j
 ### Utils
 deploy-commands.js
 - Used to register /commands with Discord. Run this file with `node deploy-commands.js` after adding commands.
+
 startup-script.sh
 - GCE VM startup-script included here for reference.
 
