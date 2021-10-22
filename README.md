@@ -5,14 +5,14 @@ TTNR is implemented with Node.js and JavaScript, utilizing the popular Discord.j
 
 ## Development
 
-### Node.js Versions
+### Library/Package Versions
 
 - Node.js: 16.1.11
 - NPM version: 8.1.0 (optional)
 
 ###  Running the project
 
-- Clone the repo to your local files
-- run npm install
-- Create a config.json file. Reach out to administrators for the bot's token.
+- Clone the repo
+- run `npm install`
+- Create a .env file in the root directory. `DISCORD_TOKEN=<TOKEN> CLIENT_ID=<CLIENTID> GUILD_ID=<SERVERID>`
 - node bot.js
