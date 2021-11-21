@@ -25,4 +25,5 @@ startup-script.sh
   - TOKEN: Reach out to Project Owner for token. Keep your token a secret!
   - CLIENTID: 899400703112519690
   - SERVERID: Server where bot is added. To find your guildID, enable developer mode in Discord and left click the servers name -> copy ID.
-- run `node bot.js`
+- run `node bot.js` or `npm start`
+- run npm `test` to run the jest test suite
