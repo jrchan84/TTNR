@@ -1,9 +1,6 @@
-token=$(gcloud secrets versions access 1 --secret="DISCORD_TOKEN")
-client=$(gcloud secrets versions access 1 --secret="CLIENT_ID")
-guild=$(gcloud secrets versions access 1 --secret="GUILD_ID")
+#!/bin/sh
 
-cat >./.env << EOF
-DISCORD_TOKEN=$token
-CLIENT_ID=$client
-GUILD_ID=$guild
-EOF
+touch .env
+{
+  printf "CLIENT_ID=%sDISCORD_TOKEN=%sGUILD_ID=%s" "$ARG_ENV_CLIENT_ID" "$ARG_ENV_DISCORD_TOKEN" "$ARG_ENV_GUILD_ID"
+} >> .env

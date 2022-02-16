@@ -45,6 +45,14 @@ jobs:
         with:
           credentials_json: '${{ secrets.GCE_SA_KEY }}'
 
+      -id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v0'
+        with:
+          secrets: |-
+            CLIENT_ID:$PROJECT_ID/CLIENT_ID
+            DISCORD_TOKEN:$PROJECT_ID/DISCORD_TOKEN
+            GUILD_ID:$PROJECT_ID/DISCORD_TOKEN
+
       # Setup gcloud CLI
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
@@ -55,8 +63,16 @@ jobs:
           gcloud --quiet auth configure-docker
       # Build the Docker image
       - name: Build
+        env:
+          ENV_CLIENT_ID: '${{ steps.secrets.outputs.CLIENT_ID }}'
+          ENV_DISCORD_TOKEN: '${{ steps.secrets.outputs.DISCORD_TOKEN }}'
+          ENV_GUILD_ID: '${{ steps.secrets.outputs.GUILD_ID }}'
         run: |-
-          docker build --tag "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA" .
+          docker \
+          --build-arg ARG_ENV_CLIENT_ID=$ENV_CLIENT_ID
+          --build-arg ARG_ENV_DISCORD_TOKEN=$ENV_DISCORD_TOKEN
+          --build-arg ARG_ENV_GUILD_ID=$ENV_GUILD_ID
+          build --tag "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA" .
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
