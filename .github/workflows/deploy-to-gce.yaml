@@ -70,9 +70,9 @@ jobs:
           ENV_GUILD_ID: '${{ steps.secrets.outputs.GUILD_ID }}'
         run: |-
           docker \
-          --build-arg ARG_ENV_CLIENT_ID=$ENV_CLIENT_ID
-          --build-arg ARG_ENV_DISCORD_TOKEN=$ENV_DISCORD_TOKEN
-          --build-arg ARG_ENV_GUILD_ID=$ENV_GUILD_ID
+            --build-arg ARG_ENV_CLIENT_ID=$ENV_CLIENT_ID
+            --build-arg ARG_ENV_DISCORD_TOKEN=$ENV_DISCORD_TOKEN
+            --build-arg ARG_ENV_GUILD_ID=$ENV_GUILD_ID
           build --tag "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA" .
       # Push the Docker image to Google Container Registry
       - name: Publish
