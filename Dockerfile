@@ -19,7 +19,7 @@ ARG ARG_ENV_GUILD_ID
 
 # Creates local .env file from docker env variables
 COPY inject-secrets.sh ./
-RUN ./inject-secrets.sh
+RUN chmod +x ./inject-secrets.sh
 
 # Bundle app source
 COPY . .
