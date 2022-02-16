@@ -21,7 +21,8 @@ on:
       - dockerize_refactoring # TODO: take out once workflow is working
 
 env:
-  PROJECT_ID: ${{ secrets.GCE_PROJECT }}
+  PROJECT_NAME: ${{ secrets.GCE_PROJECT_NAME }}
+  PROJECT_ID: ${{ secrets.GCE_PROJECT_ID }}
   GCE_INSTANCE: ubcdsc-docker-vm-1
   GCE_INSTANCE_ZONE: us-west1-b
 
@@ -76,7 +77,7 @@ jobs:
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
-          docker push "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA"
+          docker push "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA"
       # Prune unused images to avoid failing due to full boot disk
       - name: Update startup script to prune
         run: |-
@@ -88,11 +89,11 @@ jobs:
         run: |-
           gcloud compute instances update-container "$GCE_INSTANCE" \
             --zone "$GCE_INSTANCE_ZONE" \
-            --container-image "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA"
+            --container-image "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA"
       # Purge old images from GCR (avoid exceeding free-tier)
       - name: Purge GCR images
         run: |-
-          gcloud container images list-tags gcr.io/$PROJECT_ID/$GCE_INSTANCE-image \
+          gcloud container images list-tags gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image \
             --format="get(digest)" --filter="NOT tags=$GITHUB_SHA" | \
-            awk -v image_path="gcr.io/$PROJECT_ID/$GCE_INSTANCE-image@" '{print image_path $1}' | \
+            awk -v image_path="gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image@" '{print image_path $1}' | \
             xargs -r gcloud container images delete --force-delete-tags --quiet
