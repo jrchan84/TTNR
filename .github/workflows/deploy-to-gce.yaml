@@ -64,10 +64,10 @@ jobs:
           gcloud --quiet auth configure-docker
       # Build the Docker image
       - name: Build
-        env:
-          ENV_CLIENT_ID: '${{ steps.secrets.outputs.CLIENT_ID }}'
-          ENV_DISCORD_TOKEN: '${{ steps.secrets.outputs.DISCORD_TOKEN }}'
-          ENV_GUILD_ID: '${{ steps.secrets.outputs.GUILD_ID }}'
+#        env:
+#          ENV_CLIENT_ID: '${{ steps.secrets.outputs.CLIENT_ID }}'
+#          ENV_DISCORD_TOKEN: '${{ steps.secrets.outputs.DISCORD_TOKEN }}'
+#          ENV_GUILD_ID: '${{ steps.secrets.outputs.GUILD_ID }}'
         run: |-
           docker build --tag "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA" .
       # docker build \
