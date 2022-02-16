@@ -2,10 +2,12 @@
 const CLIENT_ID = 'projects/802374845507/secrets/CLIENT_ID/versions/latest';
 const DISCORD_TOKEN = 'projects/802374845507/secrets/DISCORD_TOKEN/versions/latest';
 const GUILD_ID = 'projects/802374845507/secrets/GUILD_ID/versions/latest';
+const path = '.env'
 
 // Imports the Secret Manager library
 const {SecretManagerServiceClient} = require('@google-cloud/secret-manager');
 const fs = require('fs')
+
 // Instantiates a client
 const client = new SecretManagerServiceClient();
 
@@ -46,16 +48,16 @@ async function accessSecret3Version() {
 async function writeToEnv(payload) {
     console.log(payload);
     try {
-        if (fs.existsSync("./.env")) {
-            await fs.appendFile('./.env', payload)
+        if (fs.existsSync(path)) {
+            await fs.appendFile(path, payload)
         } else {
-            await fs.writeFile('./.env', payload)
+            await fs.writeFile(path, payload)
         }
     } catch (err) {
     console.error(err)
     }
 
-    fs.readFile('./.env', 'utf8', function (err,data) {
+    fs.readFile(path, 'utf8', function (err,data) {
       if (err) {
         return console.log(err);
       }
