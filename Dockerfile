@@ -15,9 +15,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-# Fetch secrets into .env from Secrets Manager
-RUN . inject-secrets.sh
-ADD .env .
+# Inject secrets into .env from google secrets manager
+CMD ["npm", "inject-secrets"]
+
+# Include new .env file
+COPY . .
 
 # Run the bot
 CMD [ "npm", "start" ]
