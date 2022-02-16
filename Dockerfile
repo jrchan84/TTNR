@@ -16,7 +16,7 @@ RUN npm install
 COPY . .
 
 # Fetch secrets into .env from Secrets Manager
-RUN chmod +x /inject-secrets.sh
+RUN . inject-secrets.sh
 ADD .env .
 
 # Run the bot
