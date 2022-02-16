@@ -45,14 +45,14 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GCE_SA_KEY }}'
-
+      # Fetch secrets to be injected as docker env variables, and then injected into .env project file. TODO: Still hardcorded project-id
       - id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v0'
         with:
           secrets: |-
-            CLIENT_ID:projects/'${{ secrets.GCE_PROJECT_ID }}'/secrets/CLIENT_ID
-            DISCORD_TOKEN:projects/'${{ secrets.GCE_PROJECT_ID }}'/secrets/DISCORD_TOKEN
-            GUILD_ID:projects/'${{ secrets.GCE_PROJECT_ID }}'/secrets/GUILD_ID
+            CLIENT_ID:'projects/802374845507/secrets/CLIENT_ID'
+            DISCORD_TOKEN:projects/802374845507/secrets/DISCORD_TOKEN
+            GUILD_ID:projects/802374845507/secrets/GUILD_ID
 
       # Setup gcloud CLI
       - name: Set up Cloud SDK
