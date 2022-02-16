@@ -49,9 +49,13 @@ async function writeToEnv(payload) {
     console.log(payload);
     try {
         if (fs.existsSync(path)) {
-            await fs.appendFile(path, payload)
+            await fs.appendFile(path, payload, function(err, result) {
+                if(err) console.log('error', err);
+            });
         } else {
-            await fs.writeFile(path, payload)
+            await fs.writeFile(path, payload, function(err, result) {
+                if(err) console.log('error', err);
+            });
         }
     } catch (err) {
     console.error(err)
