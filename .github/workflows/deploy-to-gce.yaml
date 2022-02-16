@@ -52,7 +52,7 @@ jobs:
           secrets: |-
             CLIENT_ID:$PROJECT_ID/CLIENT_ID
             DISCORD_TOKEN:$PROJECT_ID/DISCORD_TOKEN
-            GUILD_ID:$PROJECT_ID/DISCORD_TOKEN
+            GUILD_ID:$PROJECT_ID/GUILD_ID
 
       # Setup gcloud CLI
       - name: Set up Cloud SDK
