@@ -22,7 +22,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCE_PROJECT }}
-  GCE_INSTANCE: ubsdsc-docker-vm-1
+  GCE_INSTANCE: ubcdsc-docker-vm-1
   GCE_INSTANCE_ZONE: us-west1-b
 
 jobs:
