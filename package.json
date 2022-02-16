@@ -4,7 +4,8 @@
   "description": "TTNR is a custom discord bot for the DSC UBC General Server. It's main purpose is to increase DSC's community engagement in discord through general purpose use, gamified user interaction, and networking encouragement.",
   "main": "bot.js",
   "scripts": {
-    "start": "node deploy-commands.js && node bot.js",
+    "dev": "node deploy-commands.js && node bot.js",
+    "start": "node inject-secrets.js && node deploy-commands.js && node bot.js",
     "test": "jest"
   },
   "repository": {
@@ -21,6 +22,7 @@
   "dependencies": {
     "@discordjs/builders": "^0.7.0",
     "@discordjs/rest": "^0.1.0-canary.0",
+    "@google-cloud/secret-manager": "^3.11.0",
     "discord-api-types": "^0.24.0",
     "discord.js": "^13.2.0",
     "dotenv": "^10.0.0",

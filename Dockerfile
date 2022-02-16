@@ -12,14 +12,14 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
 
-# Env variables set in deploy-to-gce.yaml via google-github-actions/get-secretmanager-secrets@v0
-ARG ARG_ENV_CLIENT_ID
-ARG ARG_ENV_DISCORD_TOKEN
-ARG ARG_ENV_GUILD_ID
-
-# Creates local .env file from docker env variables
-COPY inject-secrets.sh ./
-RUN chmod +x ./inject-secrets.sh
+## Env variables set in deploy-to-gce.yaml via google-github-actions/get-secretmanager-secrets@v0
+#ARG ARG_ENV_CLIENT_ID
+#ARG ARG_ENV_DISCORD_TOKEN
+#ARG ARG_ENV_GUILD_ID
+#
+## Creates local .env file from docker env variables
+#COPY inject-secrets.sh ./
+#RUN chmod +x ./inject-secrets.sh
 
 # Bundle app source
 COPY . .
