@@ -12,7 +12,7 @@ const client = new SecretManagerServiceClient();
 // SecretManager only supports fetching 1 secret per API call
 async function accessSecret1Version() {
   const [version] = await client.accessSecretVersion({
-      CLIENT_ID: CLIENT_ID,
+      name: CLIENT_ID,
   });
 
   // Extract the payload as a string.
@@ -23,7 +23,7 @@ async function accessSecret1Version() {
 
 async function accessSecret2Version() {
   const [version] = await client.accessSecretVersion({
-      DISCORD_TOKEN: DISCORD_TOKEN,
+      name: DISCORD_TOKEN,
   });
 
   // Extract the payload as a string.
@@ -34,7 +34,7 @@ async function accessSecret2Version() {
 
 async function accessSecret3Version() {
   const [version] = await client.accessSecretVersion({
-      GUILD_ID: GUILD_ID,
+      name: GUILD_ID,
   });
 
   // Extract the payload as a string.
