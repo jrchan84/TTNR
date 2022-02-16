@@ -9,28 +9,51 @@ const fs = require('fs')
 // Instantiates a client
 const client = new SecretManagerServiceClient();
 
-async function accessSecretVersion() {
+// SecretManager only supports fetching 1 secret per API call
+async function accessSecret1Version() {
   const [version] = await client.accessSecretVersion({
       CLIENT_ID: CLIENT_ID,
+  });
+
+  // Extract the payload as a string.
+  const payload = version.payload.data.toString();
+
+  writeToEnv(payload);
+}
+async function accessSecret1Version() {
+  const [version] = await client.accessSecretVersion({
       DISCORD_TOKEN: DISCORD_TOKEN,
+  });
+
+  // Extract the payload as a string.
+  const payload = version.payload.data.toString();
+
+  writeToEnv(payload);
+}
+async function accessSecret1Version() {
+  const [version] = await client.accessSecretVersion({
       GUILD_ID: GUILD_ID,
   });
 
   // Extract the payload as a string.
   const payload = version.payload.data.toString();
 
-  // WARNING: Do not print the secret in a production environment - this
-  // snippet is showing how to access the secret material.
   writeToEnv(payload);
 }
 
-function writeToEnv(payload) {
+async function writeToEnv(payload) {
     console.log(payload);
     try {
-    fs.writeFileSync('./.env', payload)
+        if (fs.existsSync("./.env")) {
+            await fs.appendFile('./.env', payload)
+        } else {
+            await fs.writeFile('./.env', payload)
+        }
     } catch (err) {
     console.error(err)
     }
 }
 
-accessSecretVersion();
+accessSecret1Version();
+accessSecret2Version();
+accessSecret3Version();
