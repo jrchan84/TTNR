@@ -20,7 +20,8 @@ async function accessSecret1Version() {
 
   writeToEnv(payload);
 }
-async function accessSecret1Version() {
+
+async function accessSecret2Version() {
   const [version] = await client.accessSecretVersion({
       DISCORD_TOKEN: DISCORD_TOKEN,
   });
@@ -30,7 +31,8 @@ async function accessSecret1Version() {
 
   writeToEnv(payload);
 }
-async function accessSecret1Version() {
+
+async function accessSecret3Version() {
   const [version] = await client.accessSecretVersion({
       GUILD_ID: GUILD_ID,
   });
@@ -52,6 +54,13 @@ async function writeToEnv(payload) {
     } catch (err) {
     console.error(err)
     }
+
+    fs.readFile('./.env', 'utf8', function (err,data) {
+      if (err) {
+        return console.log(err);
+      }
+      console.log(data);
+    });
 }
 
 accessSecret1Version();
