@@ -73,7 +73,7 @@ jobs:
             --build-arg ARG_ENV_CLIENT_ID=$ENV_CLIENT_ID \
             --build-arg ARG_ENV_DISCORD_TOKEN=$ENV_DISCORD_TOKEN \
             --build-arg ARG_ENV_GUILD_ID=$ENV_GUILD_ID \
-            --tag "gcr.io/$PROJECT_ID/$GCE_INSTANCE-image:$GITHUB_SHA" .
+            --tag "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA" .
       # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
