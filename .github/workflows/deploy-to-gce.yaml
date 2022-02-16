@@ -50,9 +50,9 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v0'
         with:
           secrets: |-
-            CLIENT_ID:projects/802374845507/secrets/CLIENT_ID
-            DISCORD_TOKEN:projects/802374845507/secrets/DISCORD_TOKEN
-            GUILD_ID:projects/802374845507/secrets/GUILD_ID
+            CLIENT_ID:projects/$PROJECT_ID/secrets/CLIENT_ID
+            DISCORD_TOKEN:projects/$PROJECT_ID/secrets/DISCORD_TOKEN
+            GUILD_ID:projects/$PROJECT_ID/secrets/GUILD_ID
 
       # Setup gcloud CLI
       - name: Set up Cloud SDK
