@@ -21,7 +21,7 @@ async function accessSecret1Version() {
   const payload = version.payload.data.toString();
   const envPayload = 'CLIENT_ID=' + payload + '\r\n';
 
-  writeToEnv(payload);
+  writeToEnv(envPayload);
 }
 
 async function accessSecret2Version() {
@@ -33,7 +33,7 @@ async function accessSecret2Version() {
   const payload = version.payload.data.toString();
   const envPayload = 'DISCORD_TOKEN=' + payload + '\r\n';
 
-  writeToEnv(payload);
+  writeToEnv(envPayload);
 }
 
 async function accessSecret3Version() {
@@ -67,7 +67,7 @@ async function writeToEnv(payload) {
       if (err) {
         return console.log(err);
       }
-      console.log(data);
+      console.log(data + '\n');
     });
 }
 
