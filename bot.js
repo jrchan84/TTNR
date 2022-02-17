@@ -3,7 +3,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
-const serviceAccount = require('./GOOGLE_SERVICE_ACCOUNT.json');
+const serviceAccount = require('./GCE_SA_KEY.json');
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -15,6 +15,11 @@ for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 	client.commands.set(command.data.name, command);
 }
+
+// In GCE, use
+// initializeApp({
+//     credential: applicationDefault()
+// });
 
 initializeApp({
 	credential: cert(serviceAccount)
