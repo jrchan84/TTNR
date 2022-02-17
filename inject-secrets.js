@@ -19,6 +19,7 @@ async function accessSecret1Version() {
 
   // Extract the payload as a string.
   const payload = version.payload.data.toString();
+  const envPayload = 'CLIENT_ID=' + payload + '\r\n';
 
   writeToEnv(payload);
 }
@@ -30,6 +31,7 @@ async function accessSecret2Version() {
 
   // Extract the payload as a string.
   const payload = version.payload.data.toString();
+  const envPayload = 'DISCORD_TOKEN=' + payload + '\r\n';
 
   writeToEnv(payload);
 }
@@ -41,12 +43,12 @@ async function accessSecret3Version() {
 
   // Extract the payload as a string.
   const payload = version.payload.data.toString();
+  const envPayload = 'GUILD_ID=' + payload + '\r\n';
 
-  writeToEnv(payload);
+  writeToEnv(envPayload);
 }
 
 async function writeToEnv(payload) {
-    console.log(payload);
     try {
         if (fs.existsSync(path)) {
             await fs.appendFile(path, payload, function(err, result) {
