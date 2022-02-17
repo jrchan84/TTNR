@@ -40,19 +40,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Alternative option - authentication via credentials json
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GCE_SA_KEY }}'
-      # Fetch secrets to be injected as docker env variables, and then injected into .env project file. TODO: Still hardcorded project-id
-      #      - id: 'secrets'
-      #        uses: 'google-github-actions/get-secretmanager-secrets@v0'
-      #        with:
-      #          secrets: |-
-      #            CLIENT_ID:projects/802374845507/secrets/CLIENT_ID
-      #            DISCORD_TOKEN:projects/802374845507/secrets/DISCORD_TOKEN
-      #            GUILD_ID:projects/802374845507/secrets/GUILD_ID
+      # ALTERNATIVE: inject secrets to docker env variables
+      # - id: 'secrets'
+      #   uses: 'google-github-actions/get-secretmanager-secrets@v0'
+      #   with:
+      #     secrets: |-
+      #       CLIENT_ID:projects/802374845507/secrets/CLIENT_ID
+      #       DISCORD_TOKEN:projects/802374845507/secrets/DISCORD_TOKEN
+      #       GUILD_ID:projects/802374845507/secrets/GUILD_ID
 
       # Setup gcloud CLI
       - name: Set up Cloud SDK
@@ -64,18 +63,20 @@ jobs:
           gcloud --quiet auth configure-docker
       # Build the Docker image
       - name: Build
-#        env:
-#          ENV_CLIENT_ID: '${{ steps.secrets.outputs.CLIENT_ID }}'
-#          ENV_DISCORD_TOKEN: '${{ steps.secrets.outputs.DISCORD_TOKEN }}'
-#          ENV_GUILD_ID: '${{ steps.secrets.outputs.GUILD_ID }}'
+        # ALTERNATIVE: inject secrets to docker env variables
+        # env:
+        #   ENV_CLIENT_ID: '${{ steps.secrets.outputs.CLIENT_ID }}'
+        #   ENV_DISCORD_TOKEN: '${{ steps.secrets.outputs.DISCORD_TOKEN }}'
+        #   ENV_GUILD_ID: '${{ steps.secrets.outputs.GUILD_ID }}'
         run: |-
           docker build --tag "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA" .
-      # docker build \
-      #   --build-arg ARG_ENV_CLIENT_ID=$ENV_CLIENT_ID \
-      #   --build-arg ARG_ENV_DISCORD_TOKEN=$ENV_DISCORD_TOKEN \
-      #   --build-arg ARG_ENV_GUILD_ID=$ENV_GUILD_ID \
-      #   --tag "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA" .
-      # Push the Docker image to Google Container Registry
+        # ALTERNATIVE: inject secrets to docker env variables
+        # docker build \
+        #   --build-arg ARG_ENV_CLIENT_ID=$ENV_CLIENT_ID \
+        #   --build-arg ARG_ENV_DISCORD_TOKEN=$ENV_DISCORD_TOKEN \
+        #   --build-arg ARG_ENV_GUILD_ID=$ENV_GUILD_ID \
+        #   --tag "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA" .
+        # Push the Docker image to Google Container Registry
       - name: Publish
         run: |-
           docker push "gcr.io/$PROJECT_NAME/$GCE_INSTANCE-image:$GITHUB_SHA"
