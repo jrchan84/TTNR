@@ -17,7 +17,10 @@ RUN npm install
 # ARG ARG_ENV_CLIENT_ID
 # ARG ARG_ENV_DISCORD_TOKEN
 # ARG ARG_ENV_GUILD_ID
-#
+ENV SECRET="there is no secret, it's jsut alex lol"
+
+
+
 # Creates local .env file from docker env variables
 # COPY inject-secrets.sh ./
 # RUN chmod +x ./inject-secrets.sh
