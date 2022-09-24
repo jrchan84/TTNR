@@ -1,4 +1,4 @@
-
+**This documentation is deprecated, and will be replaced with the new dockerized infrastructure**
 
 ### Development - Version Control, Testing, Deployment, Secrets
 
