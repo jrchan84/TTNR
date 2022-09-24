@@ -17,7 +17,7 @@ ubcdsc-vm-1
 - Zone: us-west1-b
 - Firewalls: allow HTTP/HTTPS traffic
 - Operating System: Debian 10 (Linux)
-- Service Account: 802374845507-compute@developer.gserviceaccount.com (default)
+- Service Account: (default)
 - Startup-Script: script that is run whenever the instance is restarted. This will pull new changes from the Source Repository.
     - Installs logging monitor (google fluentd)
     - Installs Node.js 16x
