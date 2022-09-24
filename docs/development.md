@@ -43,7 +43,7 @@ Note that you may see errors as Discord has undefined behavior when two instance
 Locally, you can create new secrets by adding a variable to the .env file and accessing the variable via `process.env.VARIABLE_NAME` in code. Make sure to never push this .env file to GitHub by ignoring it in .gitignore!
 
 Creating these secrets in the VM Instance is a bit different. We are using Google Secret Manager to store these secrets safely in the cloud.
-If you are unfamiliar with the next steps, reach out to Justin to do them for you.
+If you are unfamiliar with the next steps, reach out to the product owner.
 
 - Create the new secret in Google Secret Manager (In GCP) - Ensure the default compute service account has access to it
 - Modify the startup-script to inject it as an environmental variable. Never hard code values in the start-up script! 
