@@ -10,7 +10,7 @@ Prereqs: Install Node v16.x, NPM v8.x
 - cd into the project directory from your terminal/command line.
 - Create or checkout a branch from main with the functionality you are working on
 - run npm install
-- Create a file named ".env" in the project directory. Define the following variables (reach out to justin for values):
+- Create a file named ".env" in the project directory. Define the following variables (reach out to product owner):
     
     `DISCORD_TOKEN=xxx 
      CLIENT_ID=xxx 
